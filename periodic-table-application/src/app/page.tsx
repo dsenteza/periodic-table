@@ -1,8 +1,8 @@
-import Image from "next/image";
+import PeriodicTable from "./components/PeriodicTable/PeriodicTable";
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <div>HELLO WORLD</div>
+    <PeriodicTable />
   );
 }

@@ -1,14 +1,11 @@
 import React from "react";
+import Element from "../Element/Element";
 
-type PeriodicTableProps = {
-  name: string;
-  image: string;
-  onClick: () => void;
-};
+type PeriodicTableProps = {};
 
-const PeriodicTable: React.FC<PeriodicTableProps> = ({ name, image, onClick }) => {
+const PeriodicTable: React.FC<PeriodicTableProps> = ({}) => {
   return (
-   <div></div>
+   <Element name="Hydrogen" atomicNumber={1} symbol="H" block="s" isBlockSelected={true} />
   );
 };
 
