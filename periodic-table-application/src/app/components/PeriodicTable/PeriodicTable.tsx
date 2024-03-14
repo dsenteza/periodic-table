@@ -63,7 +63,7 @@ const PeriodicTable: React.FC<PeriodicTableProps> = ({}) => {
       </Button>
       <br />
       <br />
-      <table className={`${inverted ? "inverted" : ""}`}>
+      <table className={`table-layout ${inverted ? "inverted" : ""}`}>
         <tbody>
           {organizeElements().map((row, rowIndex) => (
             <tr key={rowIndex}>

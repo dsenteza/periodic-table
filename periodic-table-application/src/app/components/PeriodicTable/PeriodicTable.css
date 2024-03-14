@@ -6,4 +6,10 @@
 
 .page-layout {
   text-align: center;
+  align-items: center;
+}
+
+.table-layout{
+    margin-right: auto;
+    margin-left: auto;
 }

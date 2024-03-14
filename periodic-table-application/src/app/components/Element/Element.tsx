@@ -1,6 +1,5 @@
 import React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
+import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import "./Element.css";
 
@@ -41,15 +40,16 @@ const Element: React.FC<ElementProps> = ({
   const backgroundColor = getBackgroundColor(block);
 
   return (
-    <Card
+    <Box
       style={{
         backgroundColor,
         ...(isBlockSelected ? { outline: "2px solid red" } : {}),
+        width: window.innerWidth / 20,
+        height: 'auto',
       }}
       className={`element-container ${isInverted ? "inverted" : ""}`}
       onClick={onClick}
     >
-      <CardContent>
         <Typography variant="body2">{atomicNumber}</Typography>
         <Typography variant="h5" fontSize={"0.75rem"}>
           {symbol}
@@ -57,8 +57,7 @@ const Element: React.FC<ElementProps> = ({
         <Typography sx={{ mb: 1.5 }} fontSize={"0.5rem"}>
           {name.toLocaleLowerCase()}
         </Typography>
-      </CardContent>
-    </Card>
+    </Box>
   );
 };
 
