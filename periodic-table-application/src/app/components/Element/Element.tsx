@@ -12,9 +12,10 @@ type ElementProps = {
     block: string;    
     isBlockSelected: boolean;
     onClick: () => void;
+    isInverted: boolean;
 };
 
-const Element: React.FC<ElementProps> = ({ name, atomicNumber, symbol, block, isBlockSelected, onClick }) => {
+const Element: React.FC<ElementProps> = ({ name, atomicNumber, symbol, block, isBlockSelected, onClick, isInverted }) => {
 
     const getBackgroundColor = (propValue: string) => {
         switch (propValue) {
@@ -40,7 +41,7 @@ const Element: React.FC<ElementProps> = ({ name, atomicNumber, symbol, block, is
                 backgroundColor,
                 ...isBlockSelected ? { outline: '2px solid red' } : {}
             }}
-            className='element-container'
+            className={`element-container ${isInverted ? 'inverted' : ''}`}
             onClick={onClick}
         >
             <CardContent>

@@ -1,0 +1,5 @@
+.inverted {
+    grid-template-rows: repeat(10, 1fr);
+    transform: rotateX(180deg);
+    transition: transform 0.5s ease;
+}

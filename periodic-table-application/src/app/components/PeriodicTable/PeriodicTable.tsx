@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Element from "../Element/Element";
 import loadPeriodicTableData from "@/scripts/PeriodicTableData";
 import { ElementData } from "@/app/types";
+import './PeriodicTable.css';
 
 
 type PeriodicTableProps = {};
@@ -10,6 +11,7 @@ const PeriodicTable: React.FC<PeriodicTableProps> = ({}) => {
 
   const [elements, setElements] = useState<ElementData[]>([]);
   const [highlightedBlock, setHighlightedBlock] = useState<string | null>(null);
+  const [inverted, setInverted] = useState<boolean>(false);
 
   useEffect(() => {
       const fetchPeriodicTableData = async () => {
@@ -27,6 +29,10 @@ const PeriodicTable: React.FC<PeriodicTableProps> = ({}) => {
         // Highlight the clicked block
         setHighlightedBlock(block);
     }
+};
+
+const handleInvertTable = () => {
+  setInverted(!inverted);
 };
 
   const organizeElements = (): ElementData[][] => {
@@ -48,7 +54,8 @@ const PeriodicTable: React.FC<PeriodicTableProps> = ({}) => {
 
 return (
     <div>
-        <table>
+      <button onClick={handleInvertTable}>{inverted ? 'Restore' : 'Invert'}</button>
+        <table className={`${inverted ? 'inverted' : ''}`}>
             <tbody>
                 {organizeElements().map((row, rowIndex) => (
                     <tr key={rowIndex}>
@@ -62,6 +69,7 @@ return (
                                         atomicNumber={element.atomicNumber}
                                         block={element.block}
                                         isBlockSelected={highlightedBlock === element.block}
+                                        isInverted={inverted}
                                         onClick={() => handleClick(element.block)}
                                     />
                                 )}
