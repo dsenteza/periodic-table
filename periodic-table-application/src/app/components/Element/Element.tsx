@@ -43,7 +43,7 @@ const Element: React.FC<ElementProps> = ({ name, atomicNumber, symbol, block, is
         >
             <CardContent>
                 <Typography variant="body2">{atomicNumber}</Typography>
-                <Typography variant="h5" fontSize={'0.75rem'}>{symbol.toUpperCase()}</Typography>
+                <Typography variant="h5" fontSize={'0.75rem'}>{symbol}</Typography>
                 <Typography sx={{ mb: 1.5 }} color="red" fontSize={'0.5rem'}>{name.toLocaleLowerCase()}</Typography>
             </CardContent>
         </Card>
