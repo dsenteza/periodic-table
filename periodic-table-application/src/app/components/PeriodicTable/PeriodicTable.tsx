@@ -13,6 +13,7 @@ const PeriodicTable: React.FC<PeriodicTableProps> = ({}) => {
   const [highlightedBlock, setHighlightedBlock] = useState<string | null>(null);
   const [inverted, setInverted] = useState<boolean>(false);
 
+  // Fetch the periodic table data on component mount
   useEffect(() => {
     const fetchPeriodicTableData = async () => {
       const data = await loadPeriodicTableData();
@@ -36,9 +37,11 @@ const PeriodicTable: React.FC<PeriodicTableProps> = ({}) => {
   };
 
   const organizeElements = (): ElementData[][] => {
+    // Determine the maximum number of rows and columns (we know these values but allows for flexibility)
     const maxRows = Math.max(...elements.map((element) => element.row));
     const maxColumns = Math.max(...elements.map((element) => element.column));
 
+    // Create a 2D array to represent the periodic table, gaps will be filled with null
     const rows: ElementData[][] = [];
     for (let i = 0; i < maxRows; i++) {
       rows.push(new Array(maxColumns).fill(null));

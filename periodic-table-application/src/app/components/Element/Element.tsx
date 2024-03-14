@@ -22,6 +22,7 @@ const Element: React.FC<ElementProps> = ({
   onClick,
   isInverted,
 }) => {
+  // Setting background color depending on the block
   const getBackgroundColor = (propValue: string) => {
     switch (propValue) {
       case "s":
@@ -45,18 +46,19 @@ const Element: React.FC<ElementProps> = ({
         backgroundColor,
         ...(isBlockSelected ? { outline: "2px solid red" } : {}),
         width: window.innerWidth / 20,
-        height: 'auto',
+        height: "auto",
       }}
-      className={`element-container ${isInverted ? "inverted" : ""}`}
+      className={`element-container ${isInverted ? "inverted" : ""}`} // inverted class inherited fro the parent
       onClick={onClick}
+      sx={{ width: "0.05vw", height: "auto" }}
     >
-        <Typography variant="body2">{atomicNumber}</Typography>
-        <Typography variant="h5" fontSize={"0.75rem"}>
-          {symbol}
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} fontSize={"0.5rem"}>
-          {name.toLocaleLowerCase()}
-        </Typography>
+      <Typography variant="body2">{atomicNumber}</Typography>
+      <Typography variant="h5" fontSize={"0.75rem"}>
+        {symbol}
+      </Typography>
+      <Typography sx={{ mb: 1.5 }} fontSize={"0.5rem"}>
+        {name.toLocaleLowerCase()}
+      </Typography>
     </Box>
   );
 };
