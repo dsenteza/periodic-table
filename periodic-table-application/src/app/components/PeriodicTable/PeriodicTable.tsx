@@ -9,6 +9,7 @@ type PeriodicTableProps = {};
 const PeriodicTable: React.FC<PeriodicTableProps> = ({}) => {
 
   const [elements, setElements] = useState<ElementData[]>([]);
+  const [highlightedBlock, setHighlightedBlock] = useState<string | null>(null);
 
   useEffect(() => {
       const fetchPeriodicTableData = async () => {
@@ -18,7 +19,15 @@ const PeriodicTable: React.FC<PeriodicTableProps> = ({}) => {
       fetchPeriodicTableData();
   }, []);
 
-  console.log(elements);
+  const handleClick = (block: string) => {
+    if (highlightedBlock === block) {
+        // If the clicked block is already highlighted, remove the highlight
+        setHighlightedBlock(null);
+    } else {
+        // Highlight the clicked block
+        setHighlightedBlock(block);
+    }
+};
 
   const organizeElements = (): ElementData[][] => {
     const maxRows = Math.max(...elements.map((element) => element.row));
@@ -52,7 +61,8 @@ return (
                                         symbol={element.symbol}
                                         atomicNumber={element.atomicNumber}
                                         block={element.block}
-                                        isBlockSelected={false}
+                                        isBlockSelected={highlightedBlock === element.block}
+                                        onClick={() => handleClick(element.block)}
                                     />
                                 )}
                             </td>
